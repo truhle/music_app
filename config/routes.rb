@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :bands do
+    resources :albums, only: :new
+  end
+  resources :albums, except: [:new, :index] do
+    resources :tracks, only: :new
+  end
+  resources :tracks, except: [:new, :index]
   get 'session/new' => 'sessions#new'
   post 'session' => 'sessions#create'
   delete 'session' => 'sessions#destroy'

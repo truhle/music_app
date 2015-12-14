@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20151214195949) do
   enable_extension "plpgsql"
 
   create_table "albums", force: :cascade do |t|
+    t.string   "name"
     t.string   "album_type"
     t.integer  "band_id"
     t.datetime "created_at", null: false

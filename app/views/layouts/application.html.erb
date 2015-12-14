@@ -7,6 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <% if current_user %>
+      <div style="float: right">
+        <%= button_to "Sign-out", session_path, method: :delete %>
+      </div>
+    <% else %>
+      <div style="float: right">
+        <%= button_to "Sign-in", session_new_path, method: :get %>
+      </div>
+      <div style="float: right">
+        <%= button_to "Sign-up", new_user_path, method: :get %>
+      </div>
+    <% end %>
+  </header>
 
 <%= yield %>
 

@@ -1,0 +1,20 @@
+<h1>Sign Up</h1>
+<fieldset>
+  <br>
+  <form action="/users" method="post">
+    <input type="hidden" name="authenticity_token" id="authenticity_token" value="<%= form_authenticity_token %>">
+    <label>
+      Email:<br>
+      <input type="email" name="email" size="30" maxlength="60">
+    </label><br><br>
+    <label>
+      Password:<br>
+      <input type="password" name="password" size="25" maxlength="60">
+    </label><br><br>
+    <label>
+      Password Confirmation:<br>
+      <input type="password" name="password_confirmation" size="25" maxlength="60">
+    </label><br><br>
+    <input type="submit" value="Sign-up">
+  </form>
+</fieldset>

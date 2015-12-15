@@ -4,7 +4,8 @@
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <label>
     <strong>Name:<strong><br>
-    <input type="text" name="name" value="">
+    <input type="text" name="name" size="30" maxlength="120">
   </label><br>
   <input type="submit" value="Add Band">
+  <%= link_to "Cancel", url_for(:back) %>
 </form>

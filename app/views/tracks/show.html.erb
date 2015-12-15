@@ -1,0 +1,27 @@
+<h1><%= @track.name %></h1>
+
+<h3>on <%= link_to @album.name, @album %></h3>
+
+<h4><%= @track.track_type.capitalize %> track</h4>
+
+<fieldset>
+  <legend><strong>Lyrics</strong></legend>
+  <p>
+    <%= simple_format(@track.lyrics) %>
+  </p>
+</fieldset>
+
+<div style="float: left">
+  <%= button_to "Edit", edit_track_path, method: :get %>
+</div>
+<div style="float: left">
+  <%= button_to "Remove", track_path, method: :delete %>
+</div>
+<div style="float: left">
+  <%= button_to "Add another Track", new_album_track_path(@album), method: :get %>
+</div>
+<div style="float: left">
+  <%= button_to "Back to #{@album.name}", @album, method: :get %>
+</div>
+<div style="clear: both">
+</div>

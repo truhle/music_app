@@ -1,5 +1,7 @@
 class AlbumsController < ApplicationController
 
+  before_action :must_be_logged_in
+
   def create
     @album = Album.new(album_params)
     if @album.save

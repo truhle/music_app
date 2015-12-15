@@ -1,0 +1,34 @@
+<h1>New Album</h1>
+
+<fieldset>
+  <form action="/albums" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <br>
+    <label>
+      Title:<br>
+      <input type="text" name="name">
+    </label><br><br>
+    <label>
+      Band:
+      <select name="band_id">
+        <%= @bands.each do |band| %>
+          <option value="<%= band.id %>"
+            <% if band.id == @band.id %>
+              selected="selected"
+            <% end %>
+            ><%= band.name %></option>
+        <% end %>
+      </select>
+    </label><br><br>
+    Album type:<br>
+    <label>
+      <input type="radio" name="album_type" value="studio" checked="checked">
+      Studio
+    </label>
+    <label>
+      <input type="radio" name="album_type" value="live">
+      Live
+    </label><br><br>
+    <input type="submit" value="Create Album">
+  </form>
+</fieldset>

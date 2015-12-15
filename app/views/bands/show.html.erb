@@ -1,0 +1,21 @@
+<h1><%= @band.name %></h1>
+<div style="float: left">
+  <%= button_to "Edit", edit_band_path, method: :get %>
+</div>
+<div style="float: left">
+  <%= button_to "Remove", @band, method: :delete %>
+</div>
+<div style="float: left">
+  <%= button_to "Back to Bands", bands_path, method: :get %>
+</div>
+
+<div style="clear: both">
+</div>
+
+
+<h3>Albums:</h3>
+<% @band.albums.each do |album| %>
+  <%= link_to album.name, album %>
+<% end %>
+<br><br>
+<%= button_to "Add Album", new_band_album_path(@band), method: :get %>

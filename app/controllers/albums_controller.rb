@@ -10,7 +10,7 @@ class AlbumsController < ApplicationController
   end
 
   def destroy
-    find_album
+    @album = find_album
     @band = @album.band
     if @album.destroy
       redirect_to @band
@@ -20,7 +20,8 @@ class AlbumsController < ApplicationController
   end
 
   def edit
-    find_album
+    @album = find_album
+    @band = @album.band
     @bands = Band.all.order(:name)
   end
 
@@ -30,11 +31,11 @@ class AlbumsController < ApplicationController
   end
 
   def show
-    find_album
+    @album = find_album
   end
 
   def update
-    find_album
+    @album = find_album
     if @album.update(album_params)
       redirect_to @album
     else
@@ -49,6 +50,6 @@ private
   end
 
   def find_album
-    @album = Album.find(params[:id])
+    Album.find(params[:id])
   end
 end

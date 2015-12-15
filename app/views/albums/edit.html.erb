@@ -1,7 +1,7 @@
 <h1>Edit Album</h1>
 
 <fieldset>
-  <form action="/albums" method="post">
+  <form action="/albums/<%= @album.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <br>
@@ -14,7 +14,7 @@
       <select name="band_id">
         <% @bands.each do |band| %>
           <option value="<%= band.id %>"
-            <% if band.id == @album.band.id %>
+            <% if band.id == @band.id %>
               selected="selected"
             <% end %>
             ><%= band.name %></option>

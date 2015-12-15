@@ -22,10 +22,12 @@ class TracksController < ApplicationController
   def edit
     @track = find_track
     @album = @track.album
+    @same_band_albums = @album.same_band_albums
   end
 
   def new
     @album = Album.find(params[:album_id])
+    @same_band_albums = @album.same_band_albums
   end
 
   def show

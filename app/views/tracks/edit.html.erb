@@ -14,7 +14,7 @@
     <label>
       Album:
       <select name="album_id">
-        <% @album.same_band_albums.each do |album| %>
+        <% @same_band_albums.each do |album| %>
         <option value="<%= album.id %>"
           <% if album.id == @album.id %>
           selected="selected"

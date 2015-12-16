@@ -35,6 +35,7 @@ class TracksController < ApplicationController
   def show
     @track = find_track
     @album = @track.album
+    @notes = @track.notes
   end
 
   def update

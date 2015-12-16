@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   validates :email, :session_token, uniqueness: true
 
   has_secure_password
+  has_many :notes, dependent: :destroy
 
   def self.find_by_credentials(email, password)
     User.find_by(email: email).try(:authenticate, password)

@@ -25,3 +25,14 @@
 </div>
 <div style="clear: both">
 </div>
+
+<br><br>
+<% @notes.each do |note| %>
+  <div class="note">
+    <%= render "notes/note", note: note %>
+  </div>
+<% end %>
+
+<div class="form">
+  <%= render "notes/form" %>
+</div>

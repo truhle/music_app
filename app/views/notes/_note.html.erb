@@ -1,0 +1,11 @@
+<div>
+  <div>
+    "<%= note.content %>"
+  </div>
+  --<%= note.user_email %>
+  <% if current_user.id == note.user_id %>
+  <br>
+  <%= button_to "Delete", note, method: :delete %>
+  <% end %>
+</div>
+<br>

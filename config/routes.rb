@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :notes, only: [:create, :destroy, :show]
   resources :bands do
     resources :albums, only: :new
   end

@@ -1,5 +1,7 @@
 <h1>New Album</h1>
 
+<%= render "shared/errors", object: @album %>
+
 <fieldset>
   <form action="/albums" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -30,6 +32,6 @@
       Live
     </label><br><br>
     <input type="submit" value="Create Album">
-    <%= link_to "Cancel", url_for(:back) %>
+    <%= link_to "Cancel", session[:previous_url] %>
   </form>
 </fieldset>

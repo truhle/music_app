@@ -1,5 +1,7 @@
 <h1>Edit Band</h1>
 
+<%= render "shared/errors", object: @band %>
+
 <form action="/bands/<%= @band.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -8,5 +10,5 @@
     <input type="text" name="name" value="<%= @band.name %>">
   </label><br>
   <input type="submit" value="Make Change">
-  <%= link_to "Cancel", url_for(:back) %>
+  <%= link_to "Cancel", session[:previous_url] %>
 </form>

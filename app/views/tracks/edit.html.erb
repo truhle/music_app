@@ -1,5 +1,7 @@
 <h1>Edit Track</h1>
 
+<%= render "shared/errors", object: @track %>
+
 <fieldset>
   <form action="/tracks/<%= @track.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
@@ -48,7 +50,7 @@
     </label><br><br>
 
     <input type="submit" value="Update Track">
-    <%= link_to "Cancel", url_for(:back) %>
+    <%= link_to "Cancel", session[:previous_url] %>
 
   </form>
 </fieldset>

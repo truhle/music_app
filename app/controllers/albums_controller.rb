@@ -1,12 +1,15 @@
 class AlbumsController < ApplicationController
 
   before_action :must_be_logged_in
+  before_action :save_previous_url, only: :show
 
   def create
     @album = Album.new(album_params)
     if @album.save
       redirect_to @album
     else
+      @band = Band.find(params[:band_id])
+      @bands = Band.all.order(:name)
       render :new
     end
   end
@@ -28,6 +31,7 @@ class AlbumsController < ApplicationController
   end
 
   def new
+    @album = Album.new
     @band = Band.find(params[:band_id])
     @bands = Band.all.order(:name)
   end
@@ -41,6 +45,8 @@ class AlbumsController < ApplicationController
     if @album.update(album_params)
       redirect_to @album
     else
+      @band = @album.band
+      @bands = Band.all.order(:name)
       render :edit
     end
   end

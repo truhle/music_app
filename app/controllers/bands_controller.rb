@@ -1,6 +1,7 @@
 class BandsController < ApplicationController
 
   before_action :must_be_logged_in
+  before_action :save_previous_url, only: [:index, :show]
 
   def create
     @band = Band.new(band_params)

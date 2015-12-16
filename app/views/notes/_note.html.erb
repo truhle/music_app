@@ -1,6 +1,6 @@
 <div>
   <div>
-    "<%= note.content %>"
+    "<%= sanitize(note.content) %>"
   </div>
   --<%= note.user_email %>
   <% if current_user.id == note.user_id %>

@@ -1,12 +1,15 @@
 class TracksController < ApplicationController
 
   before_action :must_be_logged_in
+  before_action :save_previous_url, only: :show
 
   def create
     @track = Track.new(track_params)
     if @track.save
       redirect_to @track
     else
+      @album = Album.find(params[:album_id])
+      @same_band_albums = @album.same_band_albums
       render :new
     end
   end
@@ -28,6 +31,7 @@ class TracksController < ApplicationController
   end
 
   def new
+    @track = Track.new
     @album = Album.find(params[:album_id])
     @same_band_albums = @album.same_band_albums
   end
@@ -43,6 +47,8 @@ class TracksController < ApplicationController
     if @track.update(track_params)
       redirect_to @track
     else
+      @album = @track.album
+      @same_band_albums = @album.same_band_albums
       render :edit
     end
   end

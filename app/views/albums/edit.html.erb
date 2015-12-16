@@ -1,5 +1,8 @@
 <h1>Edit Album</h1>
 
+<%= render "shared/errors", object: @album %>
+
+
 <fieldset>
   <form action="/albums/<%= @album.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
@@ -39,6 +42,6 @@
       Live
     </label><br><br>
     <input type="submit" value="Update Album">
-    <%= link_to "Cancel", url_for(:back) %>
+    <%= link_to "Cancel", session[:previous_url] %>
   </form>
 </fieldset>

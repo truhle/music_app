@@ -23,4 +23,8 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
     end
   end
+
+  def save_previous_url
+    session[:previous_url] = request.url
+  end
 end

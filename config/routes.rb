@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   post 'session' => 'sessions#create'
   delete 'session' => 'sessions#destroy'
 
-  resources :users
+  resources :users do
+    collection do
+      get 'activate'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

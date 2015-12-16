@@ -22,3 +22,14 @@
  .error {
    color: red;
  }
+
+ .notice {
+   background-color: lightgreen;
+   padding: 1em;
+ }
+
+ .alert {
+   background-color: lightyellow;
+   padding: 1em;
+   color: red;
+ }

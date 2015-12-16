@@ -4,10 +4,12 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by_credentials(params[:email], params[:password])
-    if @user
+    if @user && @user.activated?
       log_in_user!(@user)
       redirect_to @user
     else
+      !@user ? flash.now.alert = "Incorrect Email/Password" :
+               flash.now.notice = "Please activate your account -- check your email."
       render :new
     end
   end

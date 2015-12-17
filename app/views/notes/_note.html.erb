@@ -3,9 +3,11 @@
     "<%= sanitize(note.content) %>"
   </div>
   --<%= note.user_email %>
-  <% if current_user.id == note.user_id %>
-  <br>
-  <%= button_to "Delete", note, method: :delete %>
+
+  <% if current_user.id == note.user_id || admin? %>
+    <br>
+    <%= button_to "Delete", note, method: :delete %>
   <% end %>
+  
 </div>
 <br>

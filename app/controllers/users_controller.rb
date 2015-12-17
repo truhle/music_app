@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :must_be_logged_in, only: :show
+  before_action :admin_only, only: [:index, :make_admin]
 
   def activate
     @user = User.find_by(activation_token: params[:activation_token])
@@ -25,6 +26,16 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def index
+    @users = User.all.sort
+  end
+
+  def toggle_admin
+    @user = User.find(params[:id])
+    @user.toggle!(:admin)
+    redirect_to users_url
   end
 
   def new

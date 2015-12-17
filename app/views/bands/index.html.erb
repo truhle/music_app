@@ -6,4 +6,6 @@
   </p>
 <% end %>
 
-<%= button_to "Add a Band", new_band_path, method: :get %>
+<% if admin? %>
+  <%= button_to "Add a Band", new_band_path, method: :get %>
+<% end %>

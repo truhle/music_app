@@ -11,7 +11,7 @@ class NotesController < ApplicationController
   def destroy
     @note = find_note
     @track = Track.find(@note.track_id)
-    if current_user.id != @note.user_id
+    if !current_user.admin? || current_user.id != @note.user_id
       render text: "403 FORBIDDEN"
     else
       @note.destroy

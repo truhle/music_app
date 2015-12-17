@@ -1,0 +1,23 @@
+<h1>All Users</h1>
+
+<% @users.each do |user| %>
+  <p>
+    <div style="float: left">
+      <strong><%= user.email %></strong>
+    </div>
+
+    <% if user.admin? %>
+      <div style="float: left; margin-left: .6em">
+        <%= button_to "Admin", toggle_admin_user_path(user), method: :get %>
+      </div>
+      <div style="clear:both">
+      </div>
+    <% else %>
+      <div style="float: left; margin-left: .6em">
+        <%= button_to "Not Admin", toggle_admin_user_path(user), method: :get %>
+      </div>
+      <div style="clear: both">
+      </div>
+    <% end %>
+  </p>
+<% end %>

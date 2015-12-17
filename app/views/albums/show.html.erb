@@ -4,15 +4,18 @@
 
 <h4><%= @album.album_type.capitalize %> album</h4>
 
-<div style="float: left">
-  <%= button_to "Edit", edit_album_path, method: :get %>
-</div>
-<div style="float: left">
-  <%= button_to "Remove", album_path, method: :delete %>
-</div>
-<div style="float: left">
-  <%= button_to "Add another Album", new_band_album_path(@album.band), method: :get %>
-</div>
+<% if admin? %>
+  <div style="float: left">
+    <%= button_to "Edit", edit_album_path, method: :get %>
+  </div>
+  <div style="float: left">
+    <%= button_to "Remove", album_path, method: :delete %>
+  </div>
+  <div style="float: left">
+    <%= button_to "Add another Album", new_band_album_path(@album.band), method: :get %>
+  </div>
+<% end %>
+
 <div style="float: left">
   <%= button_to "Back to #{@album.band.name}", @album.band, method: :get %>
 </div>
@@ -27,4 +30,6 @@
   </div>
 <% end %>
 
-<%= button_to "Add Track", new_album_track_path(@album), method: :get %>
+<% if admin? %>
+  <%= button_to "Add Track", new_album_track_path(@album), method: :get %>
+<% end %>

@@ -2,6 +2,7 @@ class TracksController < ApplicationController
 
   before_action :must_be_logged_in
   before_action :save_previous_url, only: :show
+  before_action :admin_only, except: :show
 
   def create
     @track = Track.new(track_params)

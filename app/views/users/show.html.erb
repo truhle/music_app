@@ -1,3 +1,7 @@
 <h1><%= current_user.email %></h1>
 
-<%= link_to "Bands", bands_path %>
+<h3><%= link_to "Bands", bands_path %></h3>
+
+<% if admin? %>
+  <h3><%= link_to "All Users", users_path %></h3>
+<% end %>

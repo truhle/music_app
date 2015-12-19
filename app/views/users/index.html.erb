@@ -3,7 +3,7 @@
 <% @users.each do |user| %>
   <p>
     <div style="float: left">
-      <strong><%= user.email %></strong>
+      <strong><%= link_to user.email, user %></strong>
     </div>
 
     <% if user.admin? %>

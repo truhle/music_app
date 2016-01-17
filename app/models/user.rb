@@ -1,11 +1,12 @@
 
 class User < ActiveRecord::Base
 
-  after_initialize :ensure_session_token!
+  before_validation :ensure_session_token!
   before_save :downcase_email
 
   validates :email, :password_digest, :session_token, :activation_token, presence: true
   validates :email, :session_token, :activation_token, uniqueness: true
+  validates_confirmation_of :password
 
   has_secure_password
   has_many :notes, dependent: :destroy
